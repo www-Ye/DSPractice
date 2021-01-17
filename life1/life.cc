@@ -30,7 +30,7 @@ void Life::update()
             case 2:
                 new_grid[row][col] = grid[row][col];    // Status stays the same.
                 break;
-            case 3;
+            case 3:
                 new_grid[row][col] = 1;                 // Cell is now alive.
                 break;
             default:
