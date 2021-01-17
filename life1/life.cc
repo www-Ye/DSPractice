@@ -1,3 +1,6 @@
+#include "utility.h"
+#include "life.h"
+
 int Life::neighbor_count(int row, int col)
 /*Pre:  The life object contains a configuration, and the
  *      coorfinates row and col define a cell inside its hedge.
@@ -44,10 +47,35 @@ void Life::initialize()
  */
 {
     int row, col;
-    
+    for(row = 0; row <= maxrow+1; row++)
+        for(col = 0; col <= maxcol+1; col++)
+            grid[row][col] = 0;
+    cout << "List the coordinates for living cells." << endl;
+    cout << "Terminate the list with the special pair-1-1" << endl;
+    cin >> row >> col;
+    while(row != -1 || col != -1){
+        if(row >= 1 && row <= maxrow)
+            if(col >= 1 && col <= maxcol)
+                grid[row][col] = 1;
+            else
+                cout << "Column" << col << "is out of range." << endl;
+        else
+            cout << "Row" << row << "is out of range." << endl;
+        cin >> row >> col;
+    }
 }
 
 void Life::print()
+/*Pre: The Life object contains a configuration.
+ *Post:The configuration is written for the user. */
 {
-
+    int row, col;
+    cout << "\nThe current Life configuration is:" << endl;
+    for(row = 1; row <= maxrow; row++){
+        for(col = 1; col <= maxcol; col++)
+            if(grid[row][col] == 1) cout << '*';
+            else cout << ' ';
+        cout << endl;
+    }
+    cout << endl;
 }
