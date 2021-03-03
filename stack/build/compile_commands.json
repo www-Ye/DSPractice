@@ -1,0 +1,12 @@
+[
+{
+  "directory": "E:/MyProject/DSPractice/stack/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe   -g -o CMakeFiles/testnode.dir/testNode.cpp.obj -c E:/MyProject/DSPractice/stack/testNode.cpp",
+  "file": "E:/MyProject/DSPractice/stack/testNode.cpp"
+},
+{
+  "directory": "E:/MyProject/DSPractice/stack/build",
+  "command": "C:/TDM-GCC-64/bin/g++.exe   -g -o CMakeFiles/testnode.dir/node.cpp.obj -c E:/MyProject/DSPractice/stack/node.cpp",
+  "file": "E:/MyProject/DSPractice/stack/node.cpp"
+}
+]
