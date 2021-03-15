@@ -1,3 +1,5 @@
+#include "AVL.h"
+
 template <class Record>
 void AVL_node<Record>::set_balance(Balance_factor b)
 {

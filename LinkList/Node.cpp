@@ -1,10 +1,12 @@
-template <class List_entry>
-Node<List_entry>::Node(){
-	next = NULL;
+#include "Node.h"
+
+template <class Node_entry>
+Node<Node_entry>::Node(){
+	next = nullptr;
 }
 
-template <class List_entry>
-Node<List_entry>::Node(List_entry data, Node<List_entry>* link = NULL){
+template <class Node_entry>
+Node<Node_entry>::Node(Node_entry data, Node<Node_entry>* link){
 	entry = data;
 	next = link;
 }

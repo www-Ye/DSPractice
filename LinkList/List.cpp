@@ -1,3 +1,4 @@
+#include "List.h"
 
 template <class List_entry>
 Node<List_entry>* List<List_entry>::set_position(int position) const{
@@ -9,7 +10,7 @@ Node<List_entry>* List<List_entry>::set_position(int position) const{
 template <class List_entry>
 Error_code List<List_entry>::insert(int position, const List_entry &x){
 	if(position < 0 || position > count)
-		return range_error;
+		return new_range_error;
 	Node<List_entry>* new_node, *previous, *following;
 	if(position > 0){
 		previous = set_position(position - 1);
@@ -17,7 +18,7 @@ Error_code List<List_entry>::insert(int position, const List_entry &x){
 	}
 	else following = head;
 	new_node = new Node<List_entry> (x, following);
-	if(new_node == NULL)
+	if(new_node == nullptr)
 		return overflow;
 	if(position == 0)
 		head = new_node;
@@ -30,17 +31,17 @@ Error_code List<List_entry>::insert(int position, const List_entry &x){
 template <class List_entry>
 List<List_entry>::List(){
 	count = 0;
-	head = NULL;
+	head = nullptr;
 }
 
 template <class List_entry>
 List<List_entry>::List(const List<List_entry> &copy){
 	count = copy.count;
 	Node<List_entry> *new_node, *old_node = copy.head;
-	if(old_node == NULL) head = NULL;
+	if(old_node == nullptr) head = nullptr;
 	else{
 		new_node = head = new Node<List_entry>(old_node->entry);
-		while(old_node->next != NULL){
+		while(old_node->next != nullptr){
 			old_node = old_node->next;
 			new_node->next = new Node<List_entry>(old_node->entry);
 			new_node = new_node->next;
@@ -55,7 +56,7 @@ void List<List_entry>::operator = (const List<List_entry> &copy){
 	count = new_copy.count;
 	head = new_copy.head;
 	new_copy.count = 0;
-	new_copy.head = NULL;
+	new_copy.head = nullptr;
 }
 
 template <class List_entry>
@@ -71,7 +72,7 @@ void List<List_entry>::clear(){
 		delete p;
 	}
 	count = 0;
-	head = NULL;
+	head = nullptr;
 }
 
 template <class List_entry>
@@ -92,7 +93,7 @@ bool List<List_entry>::full() const{
 template <class List_entry>
 Error_code List<List_entry>::replace(int position, const List_entry &x){
 	Node<List_entry>* current;
-	if(position < 0 || position >= count) return range_error;
+	if(position < 0 || position >= count) return new_range_error;
 	current = set_position(position);
 	current->entry = x;
 	return success;
@@ -101,7 +102,7 @@ Error_code List<List_entry>::replace(int position, const List_entry &x){
 template <class List_entry>
 Error_code List<List_entry>::retrieve(int position, List_entry &x) const{
 	Node<List_entry>* current;
-	if(position < 0 || position >= count) return range_error;
+	if(position < 0 || position >= count) return new_range_error;
 	current = set_position(position);
 	x = current->entry;
 	return success;
@@ -111,7 +112,7 @@ template <class List_entry>
 Error_code List<List_entry>::remove(int position, List_entry &x){
 	Node<List_entry> *prior, *current;
 	if(count == 0) return fail;
-	if(position < 0 || position >= count) return range_error;
+	if(position < 0 || position >= count) return new_range_error;
 	if(position > 0){
 		prior = set_position(position - 1);
 		current = prior->next;

@@ -1,4 +1,9 @@
-enum Balance_factor {left_higher, equal_height, right_higher);
+#ifndef AVL_H
+#define AVL_H
+
+#include "utility.h"
+
+enum Balance_factor { left_higher, equal_height, right_higher };
 
 template <class Record>
 struct AVL_node:public Binary_node<Record>{
@@ -18,3 +23,5 @@ public:
 	Error_code remove(const Record &old_data);
 private:
 };
+
+#endif
